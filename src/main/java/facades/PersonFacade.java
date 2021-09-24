@@ -1,6 +1,7 @@
 package facades;
 
 import dtos.PersonDTO;
+import entities.Address;
 import entities.Person;
 import errorhandling.ExceptionDTO;
 import errorhandling.PersonNotFoundException;
@@ -42,9 +43,9 @@ public class PersonFacade implements IPersonFacade {
 
 
     @Override
-    public PersonDTO addPerson(String fName, String lName, String phone) {
+    public PersonDTO addPerson(String fName, String lName, String phone, Address address) {
         EntityManager em = emf.createEntityManager();
-        PersonDTO personDTO = new PersonDTO(fName, lName, phone);
+        PersonDTO personDTO = new PersonDTO(fName, lName, phone, address);
         Person person = new Person(personDTO);
         try {
             em.getTransaction().begin();
@@ -56,6 +57,7 @@ public class PersonFacade implements IPersonFacade {
         }
 
     }
+
 
     @Override
     public PersonDTO deletePerson(Long id) throws PersonNotFoundException {

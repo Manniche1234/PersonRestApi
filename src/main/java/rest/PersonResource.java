@@ -32,7 +32,7 @@ public class PersonResource {
     @Consumes("application/json")
     public String createPerson(String person){
         PersonDTO personDTO = GSON.fromJson(person,PersonDTO.class);
-        PersonDTO personDTO1 = pf.addPerson(personDTO.getfName(),personDTO.getlName(),personDTO.getPhone());
+        PersonDTO personDTO1 = pf.addPerson(personDTO.getfName(),personDTO.getlName(),personDTO.getPhone(),personDTO.getAddress());
 
         return GSON.toJson(personDTO1);
     }
